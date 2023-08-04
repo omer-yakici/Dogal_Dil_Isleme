@@ -1,5 +1,10 @@
-import os
-#windows için
+import os #windows için
+import csv
+import re
+from fuzzywuzzy import fuzz
+#pip install fuzzywuzzy
+#pip install python-Levenshtein
+
 
 def dosyayi_listeye_ekle(file_path):
     sonuc_liste = []
@@ -22,6 +27,49 @@ def klasordeki_dosyalari_oku(folder_path):
 
 folder_path = '/path/to/klasor'  # Klasörünüzün doğru yolunu verin.
 dosyalar = klasordeki_dosyalari_oku(folder_path)
+
+def paragraf_ayirici(metin):
+    paragraflar = metin.split('\n\n')
+    return paragraflar
+
+def cumleleri_listele(paragraf):
+    cumleler = re.split(r'(?<!\w\.\w.)(?<![A-Z][a-z]\.)(?<=\.|\?|\!)\s', paragraf)
+    return cumleler
+
+def paragraflardaki_cumleleri_listele(paragraflar):
+    tum_cumleler = []
+    for paragraf in paragraflar:
+        cumleler = cumleleri_listele(paragraf)
+        tum_cumleler.extend(cumleler)
+    return tum_cumleler
+
+
+def en_benzer_kelimeyi_bul(kelime, konum, esik=50):
+    best_match = ""
+    best_similarity = 0
+
+    for filename in os.listdir(konum):
+        filepath = os.path.join(konum, filename)
+        if os.path.isfile(filepath):
+            with open(filepath, 'r', encoding='utf-8') as file:
+                content = file.read()
+                words_in_file = content.split()
+                for word_in_file in words_in_file:
+                    similarity = fuzz.ratio(kelime, word_in_file)
+                    if similarity > best_similarity:
+                        best_similarity = similarity
+                        best_match = word_in_file
+
+    if best_similarity >= esik:
+        return best_match
+    else:
+        return kelime
+
+def kelime_duzelt(kelime, directory_path, threshold=50):
+    words = kelime.split()
+    corrected_words = [en_benzer_kelimeyi_bul(word, directory_path, threshold) for word in words]
+    corrected_sentence = " ".join(corrected_words)
+    return corrected_sentence
 
 def karakterleri_listele(file_paths):
     karakterler_listesi = []
@@ -83,3 +131,4 @@ def kelimeleri_kaydet(dosya_adi, okunan_dosya_adi):
 #dosya_adi = 'kelimeler'
 
 #kelimeleri_kaydet(dosya_adi, okunan_dosya_adi)
+
