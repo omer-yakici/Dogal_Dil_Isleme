@@ -1,4 +1,5 @@
 import os
+#windows için
 
 def dosyayi_listeye_ekle(file_path):
     sonuc_liste = []
