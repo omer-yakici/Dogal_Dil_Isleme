@@ -1,2 +1,2 @@
 # Dogal_Dil_Isleme
-Açık kaynak kodlu doğal dil işleme kütüphanesi
+Açık kaynak kodlu Doğal Dil İşleme Kütüphanesi
