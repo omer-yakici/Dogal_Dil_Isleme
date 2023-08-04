@@ -4,7 +4,7 @@ import re
 from fuzzywuzzy import fuzz
 #pip install fuzzywuzzy
 #pip install python-Levenshtein
-
+#pip install os-sys
 
 def dosyayi_listeye_ekle(file_path):
     sonuc_liste = []
@@ -53,8 +53,8 @@ def en_benzer_kelimeyi_bul(kelime, konum, esik=50):
         if os.path.isfile(filepath):
             with open(filepath, 'r', encoding='utf-8') as file:
                 content = file.read()
-                words_in_file = content.split()
-                for word_in_file in words_in_file:
+                dosyadaki_kelime = content.split()
+                for word_in_file in dosyadaki_kelime:
                     similarity = fuzz.ratio(kelime, word_in_file)
                     if similarity > best_similarity:
                         best_similarity = similarity
@@ -63,7 +63,12 @@ def en_benzer_kelimeyi_bul(kelime, konum, esik=50):
     if best_similarity >= esik:
         return best_match
     else:
-        return kelime
+        return None
+    
+#kelime = "aranacak_kelime"
+#konum = "/path/to/klasor"
+#esik = 70  # Benzerlik eşiği
+#benzer_kelime = en_benzer_kelimeyi_bul(kelime, konum, esik)
 
 def kelime_duzelt(kelime, directory_path, threshold=50):
     words = kelime.split()
