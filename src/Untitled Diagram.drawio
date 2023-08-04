@@ -1,14 +1,14 @@
-<mxfile host="app.diagrams.net" modified="2023-08-04T11:01:33.106Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36 Edg/115.0.1901.183" etag="iUzvZfcpNITtc4uizLcV" version="20.6.0" type="github">
+<mxfile host="app.diagrams.net" modified="2023-08-04T13:30:56.125Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36 Edg/115.0.1901.183" etag="WOIAjc2Qd8QIQf25UX0Y" version="20.6.0" type="github">
   <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
-    <mxGraphModel dx="1865" dy="600" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="2865" dy="600" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1827" pageHeight="2169" math="0" shadow="0">
       <root>
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-0" />
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-1" parent="WIyWlLk6GJQsqaUBKTNV-0" />
         <mxCell id="5on1kgprRLbJ7Kiz2nXi-0" value="Doğal Dil İşleme&#39;yi çalıştır" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="-70" y="240" width="150" height="80" as="geometry" />
+          <mxGeometry x="-390" y="240" width="150" height="80" as="geometry" />
         </mxCell>
         <mxCell id="5on1kgprRLbJ7Kiz2nXi-4" value="Veri kümesindeki dosyaları oku" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="130" y="250" width="120" height="60" as="geometry" />
+          <mxGeometry x="-170" y="250" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="5on1kgprRLbJ7Kiz2nXi-5" value="Dosyanın dilini bul" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
           <mxGeometry x="520" y="130" width="120" height="60" as="geometry" />
@@ -34,8 +34,8 @@
         <mxCell id="5on1kgprRLbJ7Kiz2nXi-16" value="Anlamlandırma Kümesi" style="swimlane;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
           <mxGeometry x="840" y="350" width="500" height="210" as="geometry" />
         </mxCell>
-        <mxCell id="5on1kgprRLbJ7Kiz2nXi-20" value="&lt;div style=&quot;text-align: left;&quot;&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;Özel karakterler bir istek belirtiyor mu ?&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;Bu istek veri tabanında anlamlandırılmış mı ?&lt;/span&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;Eğer anlamlandırılmamışsa veri tabanını tara ve bir benzerlik veya kesişim var mı bul.&lt;/span&gt;&lt;/div&gt;&lt;/span&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="5on1kgprRLbJ7Kiz2nXi-16">
-          <mxGeometry x="10" y="80" width="480" height="90" as="geometry" />
+        <mxCell id="5on1kgprRLbJ7Kiz2nXi-20" value="&lt;div style=&quot;text-align: left;&quot;&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;Özel karakterler bir istek belirtiyor mu ?&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;Bu istek veri tabanında anlamlandırılmış mı ?&lt;/span&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;Eğer anlamlandırılmamışsa veri tabanını tara ve bir benzerlik veya kesişim var mı bul.&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;Yoksa bulamadığını bildir.&lt;/span&gt;&lt;/div&gt;&lt;/span&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="5on1kgprRLbJ7Kiz2nXi-16">
+          <mxGeometry x="10" y="70" width="480" height="110" as="geometry" />
         </mxCell>
         <mxCell id="5on1kgprRLbJ7Kiz2nXi-28" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="5on1kgprRLbJ7Kiz2nXi-0" target="5on1kgprRLbJ7Kiz2nXi-4">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
@@ -50,7 +50,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="5on1kgprRLbJ7Kiz2nXi-30" value="Dosyayı anlamlandır." style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="320" y="250" width="120" height="60" as="geometry" />
+          <mxGeometry x="310" y="250" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="5on1kgprRLbJ7Kiz2nXi-31" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="5on1kgprRLbJ7Kiz2nXi-30" target="5on1kgprRLbJ7Kiz2nXi-5">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
@@ -78,6 +78,42 @@
             <mxPoint x="810" y="360" as="sourcePoint" />
             <mxPoint x="840" y="400" as="targetPoint" />
           </mxGeometry>
+        </mxCell>
+        <mxCell id="5on1kgprRLbJ7Kiz2nXi-40" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="5on1kgprRLbJ7Kiz2nXi-15" target="5on1kgprRLbJ7Kiz2nXi-16">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="810" y="360" as="sourcePoint" />
+            <mxPoint x="860" y="310" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="5on1kgprRLbJ7Kiz2nXi-41" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="5on1kgprRLbJ7Kiz2nXi-8">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="810" y="360" as="sourcePoint" />
+            <mxPoint x="880" y="160" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="5on1kgprRLbJ7Kiz2nXi-42" value="Kelimelerden istek belirtenleri ayıkla." style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="880" y="130" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="5on1kgprRLbJ7Kiz2nXi-43" value="Paragraflara ayır." style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="-20" y="250" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="5on1kgprRLbJ7Kiz2nXi-44" value="Cümlelerin öğelerini çıkar." style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="130" y="250" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="5on1kgprRLbJ7Kiz2nXi-45" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="5on1kgprRLbJ7Kiz2nXi-42" target="5on1kgprRLbJ7Kiz2nXi-16">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="810" y="460" as="sourcePoint" />
+            <mxPoint x="860" y="410" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="5on1kgprRLbJ7Kiz2nXi-46" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" target="5on1kgprRLbJ7Kiz2nXi-47">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1340" y="480" as="sourcePoint" />
+            <mxPoint x="1400" y="280" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="5on1kgprRLbJ7Kiz2nXi-47" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="1360" y="200" width="160" height="80" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
