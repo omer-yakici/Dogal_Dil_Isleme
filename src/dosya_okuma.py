@@ -51,3 +51,35 @@ def karakterleri_listele(file_paths):
             karakterler_listesi.append(karakterler_sozlugu)
 
     return karakterler_listesi
+
+def kelimeleri_kaydet(dosya_adi, okunan_dosya_adi):
+    # Okunan dosyayı aç ve kelimeleri al
+    with open(okunan_dosya_adi, 'r', encoding='utf-8') as okunan_dosya:
+        kelimeler = okunan_dosya.read().split()
+        #kelimeleri alfabetik sıraya koy
+        kelimeler.sort()
+        # Dosya adında .csv uzantısı yoksa ekleyin
+    if not dosya_adi.endswith('.csv'):
+        dosya_adi += '.csv'
+
+    # Dosyanın var olup olmadığını kontrol et
+    dosya_var = os.path.isfile(dosya_adi)
+
+    # CSV dosyasını aç ve verileri düzenle ya da yeni dosya oluştur
+    with open(dosya_adi, 'a', newline='', encoding='utf-8') as csv_dosya:
+        csv_writer = csv.writer(csv_dosya)
+
+        # Eğer dosya yoksa, sütun başlıklarını yaz
+        if not dosya_var:
+            csv_writer.writerow(['Harf', 'Kelimeler'])
+
+        # Her bir harf için kelimeleri virgülle ayrılmış sütunlarda yaz
+        for harf in sorted(set(kelimeler[0][0] for kelimeler in kelimeler)):
+            harf_kelimeleri = [kelime for kelime in kelimeler if kelime.startswith(harf)]
+            csv_writer.writerow([harf, ','.join(harf_kelimeleri)])
+
+# Örnek kullanım:
+#okunan_dosya_adi = 'okunan_dosya.txt'
+#dosya_adi = 'kelimeler'
+
+#kelimeleri_kaydet(dosya_adi, okunan_dosya_adi)
