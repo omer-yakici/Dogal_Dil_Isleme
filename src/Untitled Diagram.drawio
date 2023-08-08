@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2023-08-08T06:25:44.804Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36 Edg/115.0.1901.188" etag="8b_8gIU7ZX5N1wF-6l6d" version="21.6.6" type="github">
+<mxfile host="app.diagrams.net" modified="2023-08-08T08:17:32.274Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36 Edg/115.0.1901.188" etag="qxVpRCrC2rVnMLt4mcGl" version="21.6.6" type="github">
   <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
     <mxGraphModel dx="2877" dy="602" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1827" pageHeight="2169" math="0" shadow="0">
       <root>
@@ -125,8 +125,20 @@
         <mxCell id="i-4akcVbascJaj44vfwP-3" value="İstek veri tabanında var mı ?&lt;br&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="i-4akcVbascJaj44vfwP-2">
           <mxGeometry x="15" y="50" width="170" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="i-4akcVbascJaj44vfwP-5" value="İstek veri tabanında yoksa&amp;nbsp;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="i-4akcVbascJaj44vfwP-2">
-          <mxGeometry x="15" y="80" width="170" height="30" as="geometry" />
+        <mxCell id="i-4akcVbascJaj44vfwP-5" value="İstek veri tabanında yoksa isteğe &lt;br&gt;benzer istekler var mı ?&amp;nbsp;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="i-4akcVbascJaj44vfwP-2">
+          <mxGeometry y="75" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="i-4akcVbascJaj44vfwP-6" value="Benzer istekler yoksa &lt;br&gt;bulamadığını bildir." style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="i-4akcVbascJaj44vfwP-2">
+          <mxGeometry x="30" y="110" width="140" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="i-4akcVbascJaj44vfwP-7" value="Girdileri ve istekleri eşleştirerek kaydet." style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="1820" y="280" width="200" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="i-4akcVbascJaj44vfwP-8" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.999;exitY=1.11;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="i-4akcVbascJaj44vfwP-5">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1520" y="330" as="sourcePoint" />
+            <mxPoint x="1820" y="350" as="targetPoint" />
+          </mxGeometry>
         </mxCell>
       </root>
     </mxGraphModel>
