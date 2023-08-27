@@ -1,3 +1,4 @@
+import string
 # -*- coding: utf-8 -*-
 
 turkce_harfler =['a', 'b', 'c', 'ç', 'd', 'e', 'f', 'g', 'ğ', 'h', 'ı', 'i', 'j', 'k', 'l', 'm','n', 'o', 'ö', 'p', 'r', 's', 'ş', 't', 'u', 'ü', 'v',
@@ -50,7 +51,7 @@ pinyinden_turkce = {'的': 'nin', '一': 'bir', '是': 'olmak', '不': 'değil',
                     '政': 'siyaset', '点': 'nokta', '体': 'vücut', '战': 'savaş'}
 
 
-import string
+
 
 def kelime_sayisi(cumle):
     # Verilen cümleyi boşluklardan bölerek kelimelere ayırın
