@@ -1,0 +1,3 @@
+pip install fuzzywuzzy
+pip install os #for windows
+pip install python-csv
