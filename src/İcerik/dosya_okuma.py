@@ -15,6 +15,35 @@ def dosyayi_listeye_ekle(file_path):
                     sonuc_liste.append(char)
     return sonuc_liste
 
+def kelime_saydir_ve_kaydet(klasor_yolu, cikti_dosyasi):
+    # Klasördeki dosya yollarını al
+    dosya_yollari = [os.path.join(klasor_yolu, dosya) for dosya in os.listdir(klasor_yolu) if os.path.isfile(os.path.join(klasor_yolu, dosya))]
+
+    # Tüm dosyaları tek bir metin olarak birleştir
+    toplam_metin = ""
+    for dosya_yolu in dosya_yollari:
+        with open(dosya_yolu, 'r', encoding='utf-8') as dosya:
+            icerik = dosya.read()
+            toplam_metin += icerik
+
+    # Metni kelimelere ayır
+    kelimeler = toplam_metin.split()
+
+    # Kelime sayısını hesapla
+    kelime_sayilari = Counter(kelimeler)
+
+    # Sonuçları CSV dosyasına yaz
+    with open(cikti_dosyasi, 'w', newline='', encoding='utf-8') as csvfile:
+        alanlar = ['Kelime', 'Frekans']
+        writer = csv.DictWriter(csvfile, fieldnames=alanlar)
+        writer.writeheader()
+        for kelime, frekans in kelime_sayilari.items():
+            writer.writerow({'Kelime': kelime, 'Frekans': frekans})
+            
+# Kullanım örneği:
+klasor_yolu = '/path/to/klasor'
+cikti_dosyasi = 'kelime_sayilari.csv'
+kelime_saydir_ve_kaydet(klasor_yolu, cikti_dosyasi)
 
 def klasordeki_dosyalari_oku(folder_path):
     dosyalar = []
