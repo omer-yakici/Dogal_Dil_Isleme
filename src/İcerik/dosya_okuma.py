@@ -4,7 +4,7 @@ import re
 from fuzzywuzzy import fuzz
 #pip install fuzzywuzzy
 #pip install python-Levenshtein
-###
+
 
 def dosyayi_listeye_ekle(file_path):
     sonuc_liste = []
