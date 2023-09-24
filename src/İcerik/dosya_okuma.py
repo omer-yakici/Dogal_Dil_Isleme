@@ -176,7 +176,7 @@ def indeksleme(dizin_yolu, kelime_listesi, indeks_csv):
                     dosya_listesi.append(dosya_adi)
 
                     # Eğer kelime 15'ten fazla yerde geçiyorsa, aramayı bırak
-                    if kelime_sayac[kelime] >= 20:
+                    if kelime_sayac[kelime] >= 15:
                         indekslenen_kelimeler.remove(kelime)
 
     # İndeks CSV dosyasını güncelle veya oluştur
