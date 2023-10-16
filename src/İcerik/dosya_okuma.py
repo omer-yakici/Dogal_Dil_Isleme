@@ -2,8 +2,7 @@ import os #windows için
 import csv
 import re
 from fuzzywuzzy import fuzz
-from collections import Counter
-from collections import defaultdict
+import pandas as pd
 #pip install fuzzywuzzy
 #pip install python-Levenshtein
 
@@ -18,6 +17,16 @@ def dosyayi_listeye_ekle(file_path):
     return sonuc_liste
 
 def kelime_saydir_ve_kaydet(klasor_yolu, cikti_dosyasi):
+    """
+    Counts the frequency of words in files within a specified folder and saves the results to a CSV file.
+
+    Args:
+        klasor_yolu (str): The path of the folder containing the files to be processed.
+        cikti_dosyasi (str): The path of the output CSV file.
+
+    Returns:
+        None. The function writes the word frequencies to the specified CSV file.
+    """
     # Klasördeki dosya yollarını al
     dosya_yollari = [os.path.join(klasor_yolu, dosya) for dosya in os.listdir(klasor_yolu) if os.path.isfile(os.path.join(klasor_yolu, dosya))]
 
@@ -41,12 +50,11 @@ def kelime_saydir_ve_kaydet(klasor_yolu, cikti_dosyasi):
         writer.writeheader()
         for kelime, frekans in kelime_sayilari.items():
             writer.writerow({'Kelime': kelime, 'Frekans': frekans})
-
+            
 # Kullanım örneği:
 klasor_yolu = '/path/to/klasor'
 cikti_dosyasi = 'kelime_sayilari.csv'
 kelime_saydir_ve_kaydet(klasor_yolu, cikti_dosyasi)
-
 
 def klasordeki_dosyalari_oku(folder_path):
     dosyalar = []
@@ -132,66 +140,6 @@ def karakterleri_listele(file_paths):
 
     return karakterler_listesi
 
-def indeksleme(dizin_yolu, kelime_listesi, indeks_csv):
-    # Kelime sayacı ve dosya listesi oluştur
-    kelime_sayac = defaultdict(int)
-    dosya_listesi = []
-
-    # Eğer indeks dosyası varsa, mevcut indeksi yükle
-    if os.path.exists(indeks_csv):
-        with open(indeks_csv, mode='r', newline='') as file:
-            reader = csv.reader(file)
-            for row in reader:
-                if len(row) >= 2:
-                    kelime_sayac[row[0]] = int(row[1])
-                    if len(row) >= 3:
-                        dosya_listesi.append(row[2])
-
-    # İndekslenen kelimeleri izle
-    indekslenen_kelimeler = set(kelime_sayac.keys())
-
-    # Verilen dizindeki dosyaları tara
-    for dosya_adi in os.listdir(dizin_yolu):
-        dosya_yolu = os.path.join(dizin_yolu, dosya_adi)
-        
-        if os.path.isfile(dosya_yolu):
-            # Dosya adını ve yolu tanımla
-            dosya_adi = dosya_adi
-            dosya_yolu = os.path.abspath(dosya_yolu)
-
-            # Dosyayı aç ve içeriği oku
-            with open(dosya_yolu, 'r', encoding='utf-8') as dosya:
-                dosya_icerigi = dosya.read()
-
-            # Dosya içeriğindeki kelimeleri bul
-            for kelime in kelime_listesi:
-                if kelime in indekslenen_kelimeler:
-                    # Kelimenin geçtiği sayfaları bul
-                    sayfa_listesi = [str(m.start()) for m in re.finditer(kelime, dosya_icerigi)]
-                    
-                    # Kelimenin geçtiği sayfa sayısını güncelle
-                    kelime_sayac[kelime] += len(sayfa_listesi)
-
-                    # Dosya adını dosya listesine ekle
-                    dosya_listesi.append(dosya_adi)
-
-                    # Eğer kelime 15'ten fazla yerde geçiyorsa, aramayı bırak
-                    if kelime_sayac[kelime] >= 15:
-                        indekslenen_kelimeler.remove(kelime)
-
-    # İndeks CSV dosyasını güncelle veya oluştur
-    with open(indeks_csv, mode='w', newline='') as file:
-        writer = csv.writer(file)
-        for kelime in kelime_sayac:
-            dosya_adlari = ','.join([dosya for dosya in dosya_listesi if kelime in dosya])
-            writer.writerow([kelime, kelime_sayac[kelime], dosya_adlari])
-
-
-# Örnek kullanım
-#dizin_yolu = '/path/to/files'  # İndekslenmesi gereken dosyaların bulunduğu dizin
-#kelime_listesi = ['kelime1', 'kelime2', 'kelime3']  # İndekslenmesi gereken kelimelerin listesi
-#indeks_csv = 'indeks.csv'
-
 def kelimeleri_kaydet(dosya_adi, okunan_dosya_adi):
     # Okunan dosyayı aç ve kelimeleri al
     with open(okunan_dosya_adi, 'r', encoding='utf-8') as okunan_dosya:
@@ -218,12 +166,43 @@ def kelimeleri_kaydet(dosya_adi, okunan_dosya_adi):
             harf_kelimeleri = [kelime for kelime in kelimeler if kelime.startswith(harf)]
             csv_writer.writerow([harf, ','.join(harf_kelimeleri)])
 
+
 # Örnek kullanım:
 #okunan_dosya_adi = 'okunan_dosya.txt'
 #dosya_adi = 'kelimeler'
 
 #kelimeleri_kaydet(dosya_adi, okunan_dosya_adi)
 
+def kelimeyi_ara(arama_klasoru, aranacak_kelime):
+    bulunanlar = []
+
+    # Klasördeki CSV dosyalarını bul
+    csv_dosyalari = [dosya for dosya in os.listdir(arama_klasoru) if dosya.endswith('.csv')]
+
+    # Her CSV dosyasını tara
+    for dosya_adi in csv_dosyalari:
+        dosya_yolu = os.path.join(arama_klasoru, dosya_adi)
+        df = pd.read_csv(dosya_yolu)  # CSV dosyasını oku
+
+        # Aranan kelimeyi her satırda ara.
+        for indeks, satir in df.iterrows():
+            if aranacak_kelime in satir.values:
+                bulunanlar.append(f"{dosya_adi} dosyasında {indeks} satırında bulundu.")
+
+    # Sonuçları döndür.
+    if bulunanlar:
+        return bulunanlar
+    else:
+        return ["Böyle bir bilgi yok."]
+
+# Fonksiyonu kullan
+#arama_klasoru = "your_folder_path"  # Klasör yolunu güncelle
+#aranacak_kelime = input("Aramak istediğiniz kelimeyi girin: ")
+
+#sonuclar = kelimeyi_ara(arama_klasoru, aranacak_kelime)
+
+#for sonuc in sonuclar:
+#    print(sonuc)
 
 
 
