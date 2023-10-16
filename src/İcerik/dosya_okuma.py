@@ -3,6 +3,7 @@ import csv
 import re
 from fuzzywuzzy import fuzz
 import pandas as pd
+from collections import Counter
 #pip install fuzzywuzzy
 #pip install python-Levenshtein
 
