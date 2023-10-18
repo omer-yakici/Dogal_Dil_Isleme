@@ -4,8 +4,11 @@ import re
 from fuzzywuzzy import fuzz
 import pandas as pd
 from collections import Counter
+import PyPDF2
+import time
 #pip install fuzzywuzzy
 #pip install python-Levenshtein
+#pip install PYPDF2 
 
 
 def dosyayi_listeye_ekle(file_path):
@@ -196,7 +199,7 @@ def kelimeyi_ara(arama_klasoru, aranacak_kelime):
     else:
         return ["Böyle bir bilgi yok."]
 
-# Fonksiyonu kullan
+# Fonksiyon kullanımı
 #arama_klasoru = "your_folder_path"  # Klasör yolunu güncelle
 #aranacak_kelime = input("Aramak istediğiniz kelimeyi girin: ")
 
@@ -205,7 +208,73 @@ def kelimeyi_ara(arama_klasoru, aranacak_kelime):
 #for sonuc in sonuclar:
 #    print(sonuc)
 
+def pdf_sozluk_sayilari(pdf_dosya_yolu, csv_dosya_adi):
+    # Sözlüklerin sayılarını saklayacak bir sözlük oluştur
+    sozluk_sayilari = {}
 
+    # PDF dosyasını aç
+    with open(pdf_dosya_yolu, 'rb') as pdf_file:
+        pdf_reader = PyPDF2.PdfFileReader(pdf_file)
 
+        # PDF dosyasındaki her sayfayı dolaş
+        for sayfa_numarasi in range(pdf_reader.numPages):
+            sayfa = pdf_reader.getPage(sayfa_numarasi)
+            metin = sayfa.extractText()
 
+            # CSV dosyasındaki her kelimeye bakarak hangi sözlükten kaç kelimenin geçtiğini hesapla
+            with open(csv_dosya_adi, 'r') as csv_file:
+                for satir in csv_file:
+                    satir = satir.strip()
+                    kelime = satir.split(',')[0]  # Kelimenin kendisi
+                    sozluk_adi = satir.split(',')[1]  # Sözlük adı
+
+                    # Metinde kelimenin kaç kez geçtiğini hesapla
+                    kelime_sayisi = metin.lower().count(kelime.lower())
+
+                    # Sözlük sayılarını güncelle
+                    if sozluk_adi in sozluk_sayilari:
+                        sozluk_sayilari[sozluk_adi] += kelime_sayisi
+                    else:
+                        sozluk_sayilari[sozluk_adi] = kelime_sayisi
+
+    # Sözlük sayılarını büyükten küçüğe sırala
+    sirali_sozluk_sayilari = {k: v for k, v in sorted(sozluk_sayilari.items(), key=lambda item: item[1], reverse=True)}
+
+    return sirali_sozluk_sayilari
+
+# Fonksiyonu kullanma örneği.
+#Bu fonksiyon en sondan bir önce çalışmalı.
+#pdf_dosya_yolu = 'sözlükler.pdf'  # PDF dosyasının yolunu belirtin
+#csv_dosya_adi = 'kelime_sayilari.csv'  # CSV dosyasının adını belirtin
+#sozluk_sayilari = pdf_sozluk_sayilari(pdf_dosya_yolu, csv_dosya_adi)
+
+#for sozluk, sayi in sozluk_sayilari.items():
+#    print(f"{sozluk}: {sayi} kelime")
+
+def ilerlemeyi_goster(dizin_yolu):
+    dosya_listesi = os.listdir(dizin_yolu)
+    toplam_dosya_sayisi = len(dosya_listesi)
+    tarama_adimi = toplam_dosya_sayisi // 100
+    gecen_dosya_sayisi = 0
+
+    for dosya_adi in dosya_listesi:
+        # Dosya taraması yapılacak işlemi burada gerçekleştirin
+        # Örneğin, her dosyanın içeriğini okuyabilirsiniz.
+
+        # İlerlemeyi göster
+        gecen_dosya_sayisi += 1
+        if gecen_dosya_sayisi % tarama_adimi == 0:
+            yuzde = (gecen_dosya_sayisi / toplam_dosya_sayisi) * 100
+            ilerleme = '[' + '#' * (int(yuzde)) + ' ' * (100 - int(yuzde)) + ']'
+            print(ilerleme, end='\r', flush=True)
+
+        time.sleep(0.1)  # Her dosya için 0.1 saniye bekleme süresi
+
+    # İlerleme tamamlandığında yüzdeyi 100% olarak ayarla ve bir kez daha göster
+    ilerleme = '[' + '#' * 100 + ']'
+    print(ilerleme)
+
+# Fonksiyonu kullanma örneği:
+#dizin_yolu = '/path/to/your/directory'  # Taramak istediğiniz dizini belirtin
+#ilerlemeyi_goster(dizin_yolu)
 
